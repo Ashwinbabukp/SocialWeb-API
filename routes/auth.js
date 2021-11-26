@@ -3,19 +3,18 @@ const User = require("../models/User");
 
 //register
 
-router.post("/register", async (req,res)=>{
-    const newUser = new User({
-        username:req.body.username,
-        email:req.body.email,
-        password:req.body.password,
-    });
+router.get("/register", async (req,res)=>{
+    const user = await new User({
+        username:"ashwin",
+        email:"ashwinkp@gmail.com",
+        password:"ashwin@2002"
 
-    try{
-        const user=  await newUser.save();
-        res.status(200).json(user);
-    }catch(err) {
-            console.log(err);
-    }
+
+    })
+    
+
+    await user.save();
+    res.send("ok");
       
 });
 
